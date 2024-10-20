@@ -1,0 +1,155 @@
+from libqtile import widget
+from .theme import colors
+
+
+def workspaces():
+    return [
+        widget.GroupBox(
+            fontsize=13,
+            margin_y=3,
+            margin_x=2,
+            padding_y=5,
+            padding_x=4,
+            borderwidth=5,
+            disable_drag=True,
+            active=colors[0][0],
+            inactive=colors[1][0],
+            rounded=True,
+            highlight_method="block",
+            highlight_color=colors[1][0],
+            this_screen_border=colors[1][0],
+            this_current_screen_border=colors[2][0],
+            foreground=colors[1][0],
+        ),
+    ]
+
+
+primary_widgets = [
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+        foreground=colors[14][0],
+    ),
+    *workspaces(),
+    widget.Spacer(),
+    widget.WindowName(),
+    widget.CheckUpdates(
+    ),
+    widget.Spacer(),
+    widget.Wallpaper(
+        directory="~/.wallpapers",
+        label="Wallpaper",
+        padding=10,
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.CurrentLayoutIcon(
+        scale=0.7,
+        padding=5,
+    ),
+    widget.CurrentLayout(
+        padding=5,
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.PulseVolume(
+        fmt=" {} ",
+        volume_app="pavucontrol",
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.Systray(
+        padding=5,
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.Clock(
+        format=" %d/%m - %H:%M",
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.QuickExit(
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+        foreground=colors[14][0],
+    ),
+]
+
+secondary_widgets = [
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+        foreground=colors[14][0],
+    ),
+    *workspaces(),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.CurrentLayoutIcon(scale=0.7),
+    widget.Spacer(),
+    widget.CPU(
+        format="cpu: {load_percent}% ",
+        foreground="FFD1DC"
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.Memory(
+        format=" mem: {MemUsed:.0f}G/{MemTotal:.0f}G ",
+        measure_mem="G",
+        foreground="AEC6CF"
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.Net(
+        format=' net: {down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix} ',
+        foreground="B19CD9"
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.PulseVolume(
+        fmt=" vol: {} ",
+        volume_app="pavucontrol",
+        foreground="B0E57C"
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+    ),
+    widget.Clock(
+        format=" %a, %d/%m - %H:%M",
+        foreground="FFFACD"
+    ),
+    widget.Sep(
+        linewidth=1,
+        padding=10,
+        foreground=colors[14][0],
+    ),
+]
+
+widget_defaults = {
+    "font": "FiraCode Nerd Font Bold",
+    "fontsize": 12,
+    "padding": 3,
+
+}
+
+extension_defaults = widget_defaults.copy()
