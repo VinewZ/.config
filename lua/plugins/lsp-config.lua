@@ -17,8 +17,6 @@ return {
           "tailwindcss",
           "pylsp",
           "gopls",
-          "clangd",
-          "astro",
         },
       })
     end,
@@ -28,36 +26,35 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pylsp.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.astro.setup({
-        capabilities = capabilities,
-      })
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+      -- List of language servers
+      local servers = {
+        "lua_ls", "ts_ls", "pylsp", "html", "cssls",
+        "tailwindcss", "gopls",
+      }
+
+      -- Setup each server
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
+      end
+
+      -- Keybindings for LSP
+      local keymap_opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+      vim.keymap.set("n", "gr", function()
+        require("telescope.builtin").lsp_references({
+          layout_strategy = "vertical",
+        })
+      end, keymap_opts)
+      vim.keymap.set("n", "gi", function()
+        require("telescope.builtin").lsp_implementations({
+          layout_strategy = "vertical",
+        })
+      end, keymap_opts)
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
     end,
-  },
+  }
 }
