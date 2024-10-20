@@ -1,0 +1,102 @@
+return {
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      -- vim.cmd("colorscheme kanagawa-wave")
+      vim.cmd("colorscheme kanagawa-dragon")
+      -- vim.cmd("colorscheme kanagawa-lotus")
+      require("kanagawa").setup()
+    end,
+  },
+  -- {
+  --   "kepano/flexoki-neovim",
+  --   config = function()
+  --     vim.cmd("colorscheme flexoki-dark")
+  --   end,
+  -- },
+  -- {
+  --   "uloco/bluloco.nvim",
+  --   dependencies = { "rktjmp/lush.nvim" },
+  --   config = function()
+  --     vim.opt.termguicolors = true
+  --     vim.cmd("colorscheme bluloco")
+  --   end,
+  -- },
+  -- {
+  --   "AlexvZyl/nordic.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("nordic").setup({})
+  --   end,
+  -- },
+  -- {
+  --   "shaunsingh/nord.nvim",
+  --   config = function()
+  --     vim.cmd([[colorscheme nord]])
+  --     vim.g.nord_contrast = true
+  --     require('nord').set()
+  --   end,
+  -- },
+  -- {
+  --   "scottmckendry/cyberdream.nvim",
+  --   config = function()
+  --     require('cyberdream').setup()
+  --     vim.cmd("colorscheme cyberdream")
+  --   end,
+  -- },
+  -- {
+  --   "tiagovla/tokyodark.nvim",
+  --   opts = { },
+  --   config = function(_, opts)
+  --     require("tokyodark").setup(opts)
+  --     vim.cmd("colorscheme tokyodark")
+  --   end,
+  -- },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   config = function()
+  --     require("onedark").setup({
+  --       style = "darker",
+  --     })
+  --     vim.cmd("colorscheme onedark")
+  --   end,
+  -- }
+  -- {
+  --   "eldritch-theme/eldritch.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     terminal_colors = true,
+  --     styles = {
+  --       comments = "italic",
+  --       keywords = "bold",
+  --       functions = "italic",
+  --       strings = "italic",
+  --       variables = "italic",
+  --     },
+  --   },
+  --   config = function(opts)
+  --     require("eldritch").setup(opts)
+  --     vim.cmd("colorscheme eldritch")
+  --   end,
+  -- }
+  -- {
+  --   "dgox16/oldworld.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("colorscheme oldworld")
+  --   end,
+  -- }
+  -- {
+  --   "2giosangmitom/nightfall.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function(opts)
+  --     require("nightfall").setup(opts)
+  --     vim.cmd("colorscheme maron")
+  --   end,
+  -- }
+}
