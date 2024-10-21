@@ -29,3 +29,11 @@ vim.cmd [[
   highlight CursorLine guibg=#2c2c2c
   highlight CursorColumn guibg=#2c2c2c
 ]]
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight yanked text",
+  group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end
+})
