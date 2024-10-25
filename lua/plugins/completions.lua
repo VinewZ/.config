@@ -14,6 +14,12 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local personalSnippetsPath = vim.fn.stdpath("config") .. "/lua/snippets"
+
+      for _, file in ipairs(vim.fn.readdir(personalSnippetsPath)) do
+        local snippetFile = "snippets." .. file:gsub("%.lua$", "")
+        require(snippetFile)
+      end
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
